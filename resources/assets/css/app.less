@@ -1,0 +1,480 @@
+//-----------------------------------
+//              01. Mixins
+//              02. Variable
+//              03. Reset
+//              04. Fonts
+//              05. Base
+//              06. Common classnames
+//              07. Pages
+//              08. Componenten
+//              09. Styling
+//              10. Responsive
+//-----------------------------------
+
+//-----------------------------------
+//              Mixins
+//-----------------------------------
+@import "bundle/mixins";
+//-----------------------------------
+//              Variable
+//-----------------------------------
+
+@spacing:           1.2rem;
+@font-size:         1.3rem;
+@white:             #ffffff;
+@black:             #000000;
+@grey:              #bbb;
+@lightgrey:         #fefefe;
+@red:               #f14343;
+@orange:            #ff9900;
+@green:             #a6ca00;
+@blue:              #2391fe;
+
+@prim:              #393D3F;
+@sec:               #FFEF02;
+
+@inputBG:           #fff;
+@inputPadding:      1rem;
+@inputBorder:       #393D3F;
+
+@boxShadow:         rgba(0, 0, 0, .1);
+
+//-----------------------------------
+//              Resets
+//-----------------------------------
+
+@import "bundle/reset";
+@import "bundle/normalize";
+//-----------------------------------
+//              Fonts
+//-----------------------------------
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Spectral';
+    src: url('/fonts/Spectral-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lobster';
+    src: url('/fonts/Lobster-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('/fonts/Comfortaa-Regular.ttf');
+}
+
+html{
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+    line-height: 1.5rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Spectral', sans-serif;
+    font-weight: normal;
+    line-height: 2.5rem;
+}
+
+p {
+    line-height: 1.5rem;
+}
+
+a,
+a:active,
+a:hover,
+a:link,
+a:visited {
+    text-decoration: none;
+    color: @black;
+}
+
+//-----------------------------------
+//              Base
+//-----------------------------------
+
+html, body{
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+// header
+@import "bundle/navigation";
+// end header
+
+main{
+    width: 100%;
+    height: 100%;
+}
+
+//-----------------------------------
+//         Common classnames
+//-----------------------------------
+
+.centered{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.invisible-desktop{
+    display: none;
+}
+
+.form-group{
+    display: block;
+    clear: both;
+
+    label{
+        display: inline-block;
+        margin-top: @spacing;
+    }
+
+    input{
+        display: inline-block;
+        margin-left: @spacing;
+    }
+}
+
+.unselectable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+
+   &:hover{
+    cursor: default;
+   }
+}
+
+
+//-----------------------------------
+//         Pages
+//-----------------------------------
+
+// project navigation
+.project-nav{
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+    top: 20px;
+    background-color: red;
+}
+
+// login page
+.login{
+    width: 100%;
+    height: 100%;
+    background-color: @lightgrey;
+
+    input{
+        max-width: 22rem;
+    }
+}
+
+//home page
+.home{
+    width: 100%;
+    height: 100%;
+    background-color: @lightgrey;
+
+    .panel{
+        width: 66%;
+        background-color: white;
+        border: 1px solid @grey;
+        border-radius: 15px;
+        box-shadow: calc(@spacing / 4) calc(@spacing / 2) 0 @boxShadow;
+        transition: 1s ease;
+        transform: translate(100vw, -50%);
+        overflow: hidden;
+
+        header{
+            display: table;
+            width: 100%;
+            height: 50px;
+            background-color: @prim;
+            text-align: center;
+
+            span{
+                display: table-cell;
+                vertical-align: middle;
+                font-family: 'Lobster';
+                font-size: 2rem;
+                color: lighten(@prim, 30%);
+            }
+        }
+
+        ul{
+            width: 100%;
+            height: 100%;
+            margin-bottom: 10rem;
+        }
+
+        li{
+            width: 100%;
+            padding: @spacing 2*@spacing;
+            font-family: 'Comfortaa';
+            font-size: 1rem;
+            border-bottom: 2px dotted @grey;
+            // box-shadow: 0 2px 2px @grey;
+            box-sizing: border-box;
+
+            &:hover{
+                border-left: 2px solid @prim;
+
+                span{
+                    position: relative;
+                    right: 2px;
+                }
+
+                .description{
+                    display: block;
+                }
+            }
+        }
+
+        .progress{
+            width: 10rem;
+            height: 1rem;
+            float: right;
+            border: 1px solid @grey;
+            border-radius: 20px;
+            overflow: hidden;
+
+            .bar-0{
+                background-color: @red;
+                width: 5%;
+                height: 100%;
+            }
+
+            .bar-25{
+                background-color: @orange;
+                width: 25%;
+                height: 100%;
+            }
+
+            .bar-50{
+                background-color: @blue;
+                width: 50%;
+                height: 100%;
+            }
+
+            .bar-75{
+                background-color: @blue;
+                width: 75%;
+                height: 100%;
+            }
+
+            .bar-100{
+                background-color: @green;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .description{
+            display: none;
+            position: absolute;
+            width: 100%;
+            height: 10rem;
+            bottom: 0;
+            left: 0;
+            padding: @spacing;
+
+            p{
+                font-family: 'Roboto';
+            }
+        }
+    }
+
+    nav{
+        position: relative;
+        display: table-row;
+        width: 100%;
+        height: 3rem;
+        z-index: 5;
+
+        .navigation{
+            display: table-cell;
+            position: absolute;
+            width: 5rem;
+            height: 3rem;
+            left: 100%;
+            transition: 1s ease;
+        }
+
+        a{
+            display: table-cell;
+            vertical-align: middle;
+            box-sizing: border-box;
+            height: 3rem;
+            width: 5rem;
+            background-color: rgba(255, 255, 255, .05);
+            font-family: 'Comfortaa';
+            font-size: 1rem;
+            color: rgba(255, 255, 255, .4);
+        }
+    }
+}
+
+//project page
+
+.project-nav{
+    width: 100%;
+    background-color: green;
+    top: 0;
+
+    li{
+        height: 100%;
+        float: right;
+        background-color: yellow;
+    }
+}
+
+//-----------------------------------
+//         Componenten
+//-----------------------------------
+
+//FORMS
+
+form{
+    clear: both;
+    margin-top: calc(-@spacing / 3);
+    text-align: right;
+}
+
+input{
+    padding: @inputPadding;
+    padding-left: @spacing;
+    background-color: @inputBG;
+    color: #999;
+    border: none;
+    border-bottom: 1px solid @inputBorder;
+    border-radius: 0;
+    -webkit-box-shadow:0px 2px 10px #CCC;
+
+    &:focus{
+        outline: none;
+        -webkit-box-shadow:0px 2px 10px #AAA, 0 0 0 50px @inputBG inset;
+    }
+
+    &:-webkit-autofill{
+        -webkit-box-shadow:0px 2px 5px #CCC, 0 0 0 50px @inputBG inset;
+    }
+}
+
+label{
+    font-family: 'Roboto', sans-serif;
+    color: #999;
+}
+
+input[type=submit]{
+    background-color: @prim;
+    margin-top: @spacing;
+}
+
+//END FORMS
+
+//BACKGROUND FOR LOGIN ETC
+
+.color-top{
+    position: fixed;
+    top: 0;
+    box-shadow: 0 calc(@spacing / 2) 0px @boxShadow;
+}
+
+.color-bottom{
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 calc(-@spacing / 2) 0px @boxShadow;
+}
+
+.login-bg{
+    width: 100%;
+    height: 40%;
+    background-color: @prim;
+    text-align: center;
+    transition: 1s ease;
+    z-index: 5;
+    overflow: hidden;
+
+    span{
+        display: table-cell;
+        vertical-align: middle;
+        font-family: 'Roboto';
+        font-weight: bold;
+        font-size: 20rem;
+        color: rgba(255, 255, 255, .05);
+    }
+}
+
+//END BACKGROUND FOR LOGIN ETC
+
+//-----------------------------------
+//          Styling
+//-----------------------------------
+
+
+//-----------------------------------
+//          Responsive
+//-----------------------------------
+@import "bundle/responsive";
+
+@media only screen and (max-width: 991px) {
+
+    .invisible-desktop{
+        display: block;
+    }
+
+    .login-bg{
+        height: 5rem;
+        transition: 0s ease;
+    }
+
+    .login{
+        label{
+            float: left;
+            margin-bottom: calc(@spacing / 2);
+        }
+
+        input{
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+
+    .home{
+        .panel{
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            border: none;
+            transition: 0s ease;
+        }
+    }
+}
+
+//-----------------------------------
+//         Animations
+//-----------------------------------
+
+
+//-----------------------------------
+//         Workshop
+//-----------------------------------

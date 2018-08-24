@@ -1,0 +1,28 @@
+// mixins
+.animationNav(@name, @time: 0.5s) {
+    -webkit-animation: @name @time ease-in-out normal;
+       -moz-animation: @name @time ease-in-out normal;
+        -ms-animation: @name @time ease-in-out normal;
+         -o-animation: @name @time ease-in-out normal;
+            animation: @name @time ease-in-out normal;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+.user-select(@arguments) {
+  -webkit-user-select: @arguments;
+     -moz-user-select: @arguments;
+      -ms-user-select: @arguments;
+          user-select: @arguments;
+}
+// end mixins
+
+// var
+@spacing:               1.2rem;
+
+@white:                 #ffffff;
+@black:                 #000000;
+@shadow:                rgba(0, 0, 0, 0.39);
+@navColor:              @black;
+// end var
+
