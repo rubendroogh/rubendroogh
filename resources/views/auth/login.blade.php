@@ -6,16 +6,16 @@
     <form class="centered" method="POST" action="{{ route('login') }}">
         {{ csrf_field() }}
 
+        @if ($errors->has('email'))
+            <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+
         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
             <label for="email">E-Mail</label>
 
             <input id="email" class="form-control" type="email" name="email" value="{{ old('email') }}" required>
-
-            @if ($errors->has('email'))
-                <span class="help-block">
-                    <strong>{{ $errors->first('email') }}</strong>
-                </span>
-            @endif
         </div>
 
         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
